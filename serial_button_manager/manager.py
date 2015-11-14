@@ -101,4 +101,5 @@ class SerialButtonManager(object):
                 last_checked_state = time.time()
                 self._resolve_state_mismatch()
 
+            last_state = pressed
             time.sleep(0.5)
