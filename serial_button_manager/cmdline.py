@@ -19,7 +19,7 @@ def main(args=None):
 
     options = parser.parse_args(args)
 
-    logger.basicConfig(level=logging.getLevelName(options.loglevel))
+    logging.basicConfig(level=logging.getLevelName(options.loglevel))
 
     manager = SerialButtonManager(options.serial_device, options.service_name)
     manager.run()
