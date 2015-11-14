@@ -5,7 +5,7 @@ import time
 from serial import Serial
 
 
-SERVICE_PATH = '/usr/sbin/service',
+SERVICE_PATH = '/usr/sbin/service'
 STATE_CHECK_INTERVAL = 30
 
 
