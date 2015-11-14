@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def main(args=None):
     if args is None:
-        args = sys.argv
+        args = sys.argv[1:]
 
     parser = ArgumentParser()
     parser.add_argument('serial_device', nargs=1)
