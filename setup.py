@@ -24,7 +24,7 @@ except Exception:
 
 setup(
     name="serial-button-manager",
-    version="0.1.1",
+    version="0.1.2",
     description=(
         "Control whether or not a service is running with an "
         "easy-to-construct button connected to a serial port."
