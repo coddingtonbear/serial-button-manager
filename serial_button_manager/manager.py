@@ -1,5 +1,5 @@
 import logging
-from subprocess import check_call, check_output
+from subprocess import CalledProcessError, check_call, check_output
 import time
 
 from serial import Serial
@@ -43,22 +43,32 @@ class SerialButtonManager(object):
         return self.device.getCD()
 
     def start_service(self):
-        check_call(
-            [
-                SERVICE_PATH,
-                self.service_name,
-                'start',
-            ]
-        )
+        try:
+            check_call(
+                [
+                    SERVICE_PATH,
+                    self.service_name,
+                    'start',
+                ]
+            )
+        except CalledProcessError as e:
+            logger.error(
+                "Unable to start service: %s", e
+            )
 
     def stop_service(self):
-        check_call(
-            [
-                SERVICE_PATH,
-                self.service_name,
-                'stop',
-            ]
-        )
+        try:
+            check_call(
+                [
+                    SERVICE_PATH,
+                    self.service_name,
+                    'stop',
+                ]
+            )
+        except CalledProcessError as e:
+            logger.error(
+                "Unable to stop service: %s", e
+            )
 
     def _resolve_state_mismatch(self):
         running = self.service_is_running
